@@ -23,6 +23,7 @@
     <a href="https://github.com/satiricalguru/Nexus-Web-Page"><img src="https://img.shields.io/badge/Repository-satiricalguru%2FNexus--Web--Page-D4AF37?style=for-the-badge&logo=github&logoColor=black" /></a>
     <a href="https://jaipur.manipal.edu/"><img src="https://img.shields.io/badge/Campus-Manipal_University_Jaipur-F15A24?style=for-the-badge&logo=googlemaps&logoColor=white" /></a>
     <a href="#-interactive-tech-radar"><img src="https://img.shields.io/badge/Stack-Three.js_•_TypeScript_•_Vite-000000?style=for-the-badge&logo=three.js&logoColor=F5CE62" /></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License" /></a>
   </p>
 
   <!-- Quick Navigation Pills -->
@@ -182,6 +183,12 @@ npm run preview
 ```
 
 The local development server will start at `http://localhost:5173`.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE) © 2026 Jatin Pandey, Nexus MUJ.
 
 ---
 
