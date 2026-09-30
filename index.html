@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nexus — Research, Space &amp; Technology · Manipal University Jaipur</title>
+  <meta name="description" content="Nexus is the student-led research, space, and technology club at Manipal University Jaipur (MUJ). Mission control for curiosity, research, engineering, and community." />
+  <meta name="theme-color" content="#040406" />
+  <meta name="keywords" content="Nexus, MUJ, Manipal University Jaipur, Space, Technology, Research, Web Development, Three.js, Telemetry, Satellites" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nexus · Manipal University Jaipur" />
+  <meta property="og:title" content="Nexus — Research, Space &amp; Technology at MUJ" />
+  <meta property="og:description" content="Mission control for curiosity, research, engineering, and community at Manipal University Jaipur." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/Nexus-Web-Development/Nexus-Web-Page/main/nexus-banner.png" />
+  <meta property="og:image:alt" content="Nexus banner: gold orbital mark on a black starfield" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nexus — Research, Space &amp; Technology at MUJ" />
+  <meta name="twitter:description" content="Mission control for curiosity, research, engineering, and community at Manipal University Jaipur." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/Nexus-Web-Development/Nexus-Web-Page/main/nexus-banner.png" />
+  <meta name="twitter:image:alt" content="Nexus banner: gold orbital mark on a black starfield" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/nexus-logo.png" />
+  <link rel="apple-touch-icon" href="/nexus-logo.png" />
+
+  <!-- Google Fonts: Space Grotesk, Orbitron, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Three.js Spatial Background Canvas -->
+  <canvas id="scene" aria-hidden="true"></canvas>
+
+  <!-- Sticky Mission Control Header -->
+  <header class="top" id="site-header">
+    <div class="brand-group">
+      <a class="brand" href="#top" aria-label="Nexus Home">
+        <img src="/nexus-logo.png" alt="Nexus Logo" class="brand-logo" width="34" height="34" />
+        <span class="brand-text">NEXUS</span>
+      </a>
+      <span class="sys-badge" aria-label="System status nominal">
+        <span class="pulse-dot"></span>
+        <span class="sys-text">MUJ ORBITAL // ACTIVE</span>
+      </span>
+    </div>
+
+    <div class="header-actions">
+      <button id="nav-audio-btn" class="nav-audio-btn" aria-pressed="false" aria-label="Toggle optional synthesized ambient tone" title="Toggle ambient tone">
+        <span class="eq-bars" aria-hidden="true">
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+        </span>
+        <span id="nav-audio-text" class="nav-audio-text">AMBIENCE</span>
+      </button>
+
+      <button id="menu" aria-expanded="false" aria-controls="nav" aria-label="Toggle navigation menu">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-text">Menu</span>
+      </button>
+    </div>
+
+    <nav id="nav" aria-label="Primary navigation">
+      <a href="#mission" class="nav-link">Mission</a>
+      <a href="#domains" class="nav-link">Domains</a>
+      <a href="#work" class="nav-link">Research</a>
+      <a href="#events" class="nav-link">Events</a>
+      <a href="#members" class="nav-link">Crew</a>
+      <a href="#join" class="nav-link nav-cta">Join Nexus</a>
+    </nav>
+  </header>
+
+  <!-- Main Content Sequence -->
+  <main id="top">
+    <!-- Hero Section -->
+    <section class="hero" id="hero-sector">
+      <div class="hero-content">
+        <div class="telemetry-bar">
+          <span class="telemetry-item">STATION: MANIPAL UNIVERSITY JAIPUR</span>
+          <span class="telemetry-divider">/</span>
+          <span class="telemetry-item">COORDINATES: 26.8439° N, 75.5652° E</span>
+          <span class="telemetry-divider">/</span>
+          <span class="telemetry-item">EPOCH: 2026–27</span>
+        </div>
+
+        <h1 class="hero-title">
+          Nexus is where curiosity <span class="highlight">meets orbit</span>.
+        </h1>
+
+        <p class="hero-lead">
+          A student community at Manipal University Jaipur exploring research, space, and technology. Nexus brings students together to learn across disciplines, share ideas, and develop hands-on skills.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#mission">
+            <span>Explore the Mission</span>
+            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a class="btn ghost" href="#members">Meet the Team</a>
+        </div>
+
+        <div class="interactive-guide">
+          <p class="hint" id="hint">
+            <span class="radar-ping"></span>
+            Scroll to explore, or choose a sector shortcut below.
+          </p>
+          <ul class="orbit-nav" aria-label="Direct orbital sector shortcuts">
+            <li><a href="#mission" class="orbit-link"><span class="orbit-dot"></span>01 Mission</a></li>
+            <li><a href="#domains" class="orbit-link"><span class="orbit-dot"></span>02 Domains</a></li>
+            <li><a href="#work" class="orbit-link"><span class="orbit-dot"></span>03 Research</a></li>
+            <li><a href="#events" class="orbit-link"><span class="orbit-dot"></span>04 Events</a></li>
+            <li><a href="#members" class="orbit-link"><span class="orbit-dot"></span>05 People</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider-wrap" aria-hidden="true">
+      <img src="/assets/cosmic-divider.svg" alt="" class="cosmic-divider" />
+    </div>
+
+    <!-- Mission / About Section -->
+    <section id="mission" class="sector">
+      <div class="sector-header">
+        <span class="sector-tag">SECTOR // 01</span>
+        <h2>Mission &amp; Architecture</h2>
+        <p class="sector-sub">A place to explore questions across aerospace, computing, and research.</p>
+      </div>
+
+      <div class="mission-grid">
+        <div class="mission-narrative card glass-panel">
+          <div class="card-bracket tl"></div><div class="card-bracket tr"></div>
+          <div class="card-bracket bl"></div><div class="card-bracket br"></div>
+          <span class="card-code">MANIFESTO // 2026–27</span>
+          <h3>Connecting Research, Flight, and Community</h3>
+          <p>
+            Nexus brings together students at Manipal University Jaipur who are curious about engineering, physics, computing, and design. Members can explore ideas, learn across disciplines, and share what they discover.
+          </p>
+          <p>
+            The club offers a community for learning, discussion, and hands-on exploration of space and technology.
+          </p>
+          <div class="mission-stats">
+            <div class="stat-unit">
+              <span class="stat-label">OPERATING DIVISION</span>
+              <span class="stat-val">RESEARCH &amp; SPACE</span>
+            </div>
+            <div class="stat-unit">
+              <span class="stat-label">CAMPUS HOME</span>
+              <span class="stat-val">MUJ JAIPUR</span>
+            </div>
+            <div class="stat-unit">
+              <span class="stat-label">STATUS</span>
+              <span class="stat-val nominal">LEARNING &amp; EXPLORATION</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pillars-col">
+          <article class="pillar-card card">
+            <div class="pillar-num">P-01</div>
+            <div>
+              <h4>Deep Space &amp; Astrophysics</h4>
+              <p>Space science, astronomy, celestial mechanics, and the engineering ideas behind flight.</p>
+            </div>
+          </article>
+
+          <article class="pillar-card card">
+            <div class="pillar-num">P-02</div>
+            <div>
+              <h4>Ground Stations &amp; Telemetry</h4>
+              <p>Learning about sensors, data systems, ground stations, and ways to understand telemetry.</p>
+            </div>
+          </article>
+
+          <article class="pillar-card card">
+            <div class="pillar-num">P-03</div>
+            <div>
+              <h4>Open Knowledge &amp; Spatial Web</h4>
+              <p>Open knowledge, research communication, and interactive experiences for the web.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider-wrap" aria-hidden="true">
+      <img src="/assets/cosmic-divider.svg" alt="" class="cosmic-divider" />
+    </div>
+
+    <!-- Domains Section -->
+    <section id="domains" class="sector">
+      <div class="sector-header">
+        <span class="sector-tag">SECTOR // 02</span>
+        <h2>Specialized Domains</h2>
+        <p class="note">Topics and tools members can explore across research, technology, and digital making.</p>
+      </div>
+
+      <div class="grid domain-grid">
+        <article class="card domain-card">
+          <div class="card-bracket tl"></div><div class="card-bracket tr"></div>
+          <span class="card-code">DOM-01 // VISUALIZATION</span>
+          <h3>Cosmic &amp; 3D WebGL</h3>
+          <p>Explore interactive 3D interfaces, visual simulations, and ways to represent scientific ideas on the web.</p>
+          <div class="card-tags">
+            <span class="tag">Three.js</span>
+            <span class="tag">WebGL</span>
+            <span class="tag">Shaders</span>
+          </div>
+        </article>
+
+        <article class="card domain-card">
+          <div class="card-bracket tl"></div><div class="card-bracket tr"></div>
+          <span class="card-code">DOM-02 // HARDWARE TELEMETRY</span>
+          <h3>Telemetry &amp; Ground Stations</h3>
+          <p>Explore how sensor readings and telemetry can be collected, organized, and presented in clear interfaces.</p>
+          <div class="card-tags">
+            <span class="tag">WebSockets</span>
+            <span class="tag">Real-Time UI</span>
+            <span class="tag">Data Streams</span>
+          </div>
+        </article>
+
+        <article class="card domain-card">
+          <div class="card-bracket tl"></div><div class="card-bracket tr"></div>
+          <span class="card-code">DOM-03 // ACADEMIC REPOSITORY</span>
+          <h3>Research Publications Hub</h3>
+          <p>Learn about research communication, digital archives, and accessible ways to share technical writing.</p>
+          <div class="card-tags">
+            <span class="tag">Academic MDX</span>
+            <span class="tag">LaTeX</span>
+            <span class="tag">Archives</span>
+          </div>
+        </article>
+
+        <article class="card domain-card">
+          <div class="card-bracket tl"></div><div class="card-bracket tr"></div>
+          <span class="card-code">DOM-04 // DIGITAL INFRASTRUCTURE</span>
+          <h3>Community &amp; Event Engines</h3>
+          <p>Explore useful digital tools for clubs, communities, event information, and member onboarding.</p>
+          <div class="card-tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">Cloudflare</span>
+            <span class="tag">Distributed</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="divider-wrap" aria-hidden="true">
+      <img src="/assets/cosmic-divider.svg" alt="" class="cosmic-divider" />
+    </div>
+
+    <!-- Work & Research Section -->
+    <section id="work" class="sector">
+      <div class="sector-header">
+        <span class="sector-tag">SECTOR // 03</span>
+        <h2>Work &amp; Active Transmissions</h2>
+        <p class="sector-sub">Verified project deliverables, prototypes, and mission documentation.</p>
+      </div>
+      <div id="work-list" class="grid"></div>
+    </section>
+
+    <div class="divider-wrap" aria-hidden="true">
+      <img src="/assets/cosmic-divider.svg" alt="" class="cosmic-divider" />
+    </div>
+
+    <!-- Events Section -->
+    <section id="events" class="sector">
+      <div class="sector-header">
+        <span class="sector-tag">SECTOR // 04</span>
+        <h2>Orbital Flight Schedule &amp; Events</h2>
+          <p class="sector-sub">Confirmed Nexus events and activities will be listed here with their details.</p>
+      </div>
+      <div id="events-list" class="grid"></div>
+    </section>
+
+    <div class="divider-wrap" aria-hidden="true">
+      <img src="/assets/cosmic-divider.svg" alt="" class="cosmic-divider" />
+    </div>
+
+    <!-- Members Section -->
+    <section id="members" class="sector">
+      <div class="sector-header">
+        <span class="sector-tag">SECTOR // 05</span>
+        <h2>People Behind the Mission</h2>
+        <p class="sector-sub">Official 2026–27 Committee and Technical Roster · Manipal University Jaipur</p>
+      </div>
+
+      <div class="members-toolbar">
+        <div class="search-box">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+            <path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input id="q" type="search" placeholder="Search crew member by name…" aria-label="Search members by name" />
+          <button id="clear-search" class="clear-btn" aria-label="Clear search query" style="display:none;">&times;</button>
+        </div>
+
+        <div id="chips" class="filter-chips" role="group" aria-label="Filter roster by wing or committee"></div>
+      </div>
+
+      <div class="roster-meta">
+        <p id="count" class="roster-count" aria-live="polite"></p>
+      </div>
+
+      <ul id="people" class="grid people-grid" aria-label="Members roster list"></ul>
+    </section>
+
+    <div class="divider-wrap" aria-hidden="true">
+      <img src="/assets/cosmic-divider.svg" alt="" class="cosmic-divider" />
+    </div>
+
+    <!-- Join & Contact Section -->
+    <section id="join" class="sector">
+      <div class="sector-header">
+        <span class="sector-tag">SECTOR // 06</span>
+        <h2>Establish Contact</h2>
+        <p class="sector-sub">Initiate communications with the Nexus command team or connect through campus channels.</p>
+      </div>
+
+      <div class="contact-terminal card glass-panel">
+        <div class="card-bracket tl"></div><div class="card-bracket tr"></div>
+        <div class="card-bracket bl"></div><div class="card-bracket br"></div>
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">NEXUS_UPLINK // MUJ_STATION</span>
+        </div>
+
+        <div class="terminal-body">
+          <p class="terminal-text">
+            Interested in space science, computing, research, or creative web engineering? Connect with Nexus through the links below.
+          </p>
+
+          <ul id="links" class="links-grid" aria-label="Configured communication links"></ul>
+
+          <div class="spotify-card">
+            <div class="spotify-info">
+              <span class="spotify-tag">SPOTIFY ALBUM</span>
+              <h4>Listen to the supplied Nexus album</h4>
+              <p>Open the album in Spotify. This page does not stream or bundle its tracks.</p>
+            </div>
+            <a id="spotify-link" href="https://open.spotify.com/album/1dBmFDmTfBtUz1hs9aoRKE" class="btn spotify-btn" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+              </svg>
+              <span>Listen on Spotify</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mission Control Footer -->
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <div class="footer-brand">
+        <a class="brand" href="#top">
+          <img src="/nexus-logo.png" alt="" width="26" height="26" />
+          <span>NEXUS</span>
+        </a>
+        <p class="footer-copy">
+          Research, Space &amp; Technology Club · Manipal University Jaipur, Rajasthan, India.<br />
+          Student-led research, space, and technology community © 2026 Nexus MUJ.
+        </p>
+      </div>
+
+      <div class="footer-audio-panel">
+        <div class="audio-control-bar">
+          <button id="music" class="audio-btn" aria-pressed="false" aria-label="Toggle optional synthesized ambient tone">
+            <span class="eq-bars" aria-hidden="true">
+              <span class="eq-bar"></span>
+              <span class="eq-bar"></span>
+              <span class="eq-bar"></span>
+            </span>
+            <span id="music-text">Ambient tone: off</span>
+          </button>
+          <div class="vol-control">
+            <label for="vol" class="vol-label">Volume</label>
+            <input id="vol" type="range" min="0" max="1" step="0.05" value="0.4" aria-label="Ambient tone volume" />
+          </div>
+        </div>
+        <span class="audio-note">Optional generated ambience · off until enabled</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

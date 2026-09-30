@@ -42,15 +42,15 @@
 
 > [!NOTE]
 > ### 🏛️ Official Club Organization
-> This repository is built for **[Nexus Web Development](https://github.com/Nexus-Web-Development)** — the official Web & Digital Wing of the **Nexus Research, Space & Technology Club** at **Manipal University Jaipur (MUJ)**.
+> This repository is the web development project for the **Nexus Research, Space & Technology Club** at **Manipal University Jaipur (MUJ)**.
 > 
 > 🌐 **Explore the Official Organization**: **[https://github.com/Nexus-Web-Development](https://github.com/Nexus-Web-Development)**
 
 ## 🚀 About The Mission
 
-**Nexus** is the premier student-led **Research, Space, and Technology Club** at **Manipal University Jaipur**.
+**Nexus** is a student-led **Research, Space, and Technology Club** at **Manipal University Jaipur**.
 
-The **Web Development Wing** translates scientific research, rocketry telemetry, planetary rover systems, and astronomy discoveries into captivating, high-performance web applications and spatial 3D interfaces.
+This repository focuses on web experiences and digital tools for communicating Nexus activities and interests. Its current site uses an interactive 3D scene and presents club information, member listings, and confirmed work when available.
 
 ```
                   ┌─────────────────────────────────────┐
@@ -77,12 +77,12 @@ The **Web Development Wing** translates scientific research, rocketry telemetry,
 <summary><b>🔭 Click to expand/collapse Innovation Domains</b></summary>
 <br />
 
-| Domain | Focus & Deliverables | Core Tech |
+| Topic | Areas to Explore | Example Tech |
 | :--- | :--- | :--- |
-| **🌌 Cosmic Portals & 3D Web** | Immersive WebGL experiences, interactive solar system models, space mission landing pages. | Three.js, GSAP, WebGL Shaders, Canvas API |
-| **🛰️ Telemetry & Ground Stations** | Real-time mission control dashboards for CanSat, high-altitude balloons, and rover sensor streaming. | Next.js, WebSockets, Chart.js, Tailwind CSS |
-| **🔬 Research Publication Hub** | Academic portals showcasing student-authored space research, whitepapers, and conference publications. | React, TypeScript, MDX, Node.js |
-| **⚡ Community & Event Engines** | Hackathon registration engines, member onboarding hubs, recruitment challenges, and live leaderboards. | Next.js, Firebase, Cloudflare, GitHub Actions |
+| **🌌 Cosmic Portals & 3D Web** | Interactive 3D interfaces and visual explanations of space and science topics. | Three.js, WebGL, Canvas API |
+| **🛰️ Telemetry & Ground Stations** | Learn how sensor data and telemetry can be organized and presented. | WebSockets, charting, data interfaces |
+| **🔬 Research Communication** | Digital formats for sharing research notes, papers, and technical writing. | TypeScript, MDX, accessible web UI |
+| **⚡ Community Tools** | Clear information and useful tools for club members and event participants. | TypeScript, web platform APIs |
 
 </details>
 
@@ -140,19 +140,13 @@ The **Web Development Wing** translates scientific research, rocketry telemetry,
 
 <img src="https://raw.githubusercontent.com/Nexus-Web-Development/Nexus-Web-Page/main/assets/cosmic-divider.svg" width="100%" />
 
-## 🛰️ Active Projects
+## 🛰️ This Repository
 
 <details open>
-<summary><b>🚀 Click to inspect current repository roadmap</b></summary>
+<summary><b>🚀 Click to inspect the current site</b></summary>
 <br />
 
-1. **Nexus Web Portal** (`Nexus-Web-Page`):
-   - Interactive 3D hero animation built with Three.js.
-   - Comprehensive showcase of Nexus MUJ research papers, rocketry projects, and club chapters.
-2. **Ground Station Telemetry**:
-   - Web-based telemetry dashboard visualizing altitude, temperature, GPS trajectories, and payload stats in real-time.
-3. **Cosmic UI Design System**:
-   - Tailored gold-and-void dark aesthetic tailored specifically for deep-tech and space projects.
+The current work is the Nexus club information site, including its Three.js scene, member roster, and data-driven work and events sections. Add project descriptions only when the work and its public details are confirmed.
 
 </details>
 
@@ -182,3 +176,19 @@ git push origin feature/cosmic-feature
   <b>🌐 Organization: <a href="https://github.com/Nexus-Web-Development">Nexus-Web-Development</a></b><br />
   <sub>Pioneering Space & Technology through Code • © 2026 Nexus MUJ</sub>
 </div>
+
+
+---
+
+## 🧑‍💻 Development
+
+```bash
+npm ci            # reproducible dependency install
+npm run dev       # Vite dev server
+npm run build     # type-check + production build
+npm run preview   # serve the production build
+```
+
+- **Content:** editable links, `projects`, `events`, and the `members` roster live in `src/data.ts`. Empty values render an empty state.
+- **Audio:** the optional generated ambient tone is off by default. The supplied Spotify album is an external link; its audio is not bundled or streamed by this site. Do not add a recording without documenting permission to distribute it.
+- **Still open:** a confirmed join/registration URL (`joinUrl`).

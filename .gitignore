@@ -4,7 +4,9 @@ Thumbs.db
 
 # Dependencies
 node_modules/
-package-lock.json
+
+# Local-only media pending source and rights verification
+.local-audio-review/
 
 # Build outputs
 dist/
