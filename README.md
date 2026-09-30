@@ -188,7 +188,7 @@ The local development server will start at `http://localhost:5173`.
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE) © 2026 Jatin Pandey, Nexus MUJ.
+This project is licensed under the [MIT License](LICENSE) © 2026, Nexus MUJ.
 
 ---
 
