@@ -81,15 +81,22 @@ a:hover {
 .top {
   position: sticky;
   top: 0;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 14px 5vw;
-  background: rgba(4, 4, 6, 0.82);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(4, 4, 6, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--line);
-  transition: background 0.3s;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.top.scrolled {
+  background: rgba(4, 4, 6, 0.96);
+  border-bottom-color: rgba(245, 206, 98, 0.22);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
 }
 
 .brand-group {

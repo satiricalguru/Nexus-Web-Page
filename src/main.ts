@@ -469,3 +469,18 @@ if ('IntersectionObserver' in window) {
 
   sections.forEach((sec) => activeObserver.observe(sec));
 }
+
+// 8. Sticky Header Elevation on Scroll
+const siteHeader = document.getElementById('site-header');
+if (siteHeader) {
+  const onHeaderScroll = () => {
+    if (window.scrollY > 20) {
+      siteHeader.classList.add('scrolled');
+    } else {
+      siteHeader.classList.remove('scrolled');
+    }
+  };
+  window.addEventListener('scroll', onHeaderScroll, { passive: true });
+  onHeaderScroll();
+}
+
