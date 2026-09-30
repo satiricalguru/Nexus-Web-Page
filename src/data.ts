@@ -4,6 +4,9 @@ export const config = {
   joinUrl: '', // TODO: add the join/registration form URL when available
   spotifyUrl: 'https://open.spotify.com/album/1dBmFDmTfBtUz1hs9aoRKE',
   mujUrl: 'https://www.jaipur.manipal.edu/dsw-student-clubs.php',
+  audioSrc: '/audio/nexus-ambient.mp3',
+  audioTitle: 'NEXUS',
+  audioArtist: 'MUj feat. BNM EFOSA, whyte tee',
 };
 
 export interface Member { name: string; team: string; role: string }

@@ -248,199 +248,186 @@ if (!disposeScene) {
 }
 window.addEventListener('pagehide', () => disposeScene?.());
 
-// 6. Optional generated ambience. The supplied Spotify album is linked externally and is not streamed here.
-const musicButton = $<HTMLButtonElement>('music');
-const musicText = $('music-text');
+// 6. Background Audio Player: Official Track in Continuous Loop
 const navAudioBtn = document.getElementById('nav-audio-btn') as HTMLButtonElement | null;
 const navAudioText = document.getElementById('nav-audio-text');
-const volSlider = $<HTMLInputElement>('vol');
 
-// Restore persisted volume choice
-try {
-  const savedVol = localStorage.getItem('nexus-vol');
-  if (savedVol !== null) volSlider.value = savedVol;
-} catch {
-  // localStorage disabled or private browsing
-}
-
-class CosmicSoundscape {
-  private audioCtx: AudioContext | null = null;
-  private osc1: OscillatorNode | null = null;
-  private osc2: OscillatorNode | null = null;
-  private lfo: OscillatorNode | null = null;
-  private masterGain: GainNode | null = null;
+class BackgroundAudioPlayer {
+  private audio: HTMLAudioElement | null = null;
   private isPlaying = false;
-  private resumeWhenVisible = false;
-  private onStateChangeCb: ((isPlaying: boolean) => void) | null = null;
+  private wasPlayingBeforeHidden = false;
+  private targetVolume = 0.35;
+  private hasUserManuallyPaused = false;
 
-  public onStateChange(cb: (isPlaying: boolean) => void) {
-    this.onStateChangeCb = cb;
+  constructor() {
+    this.initAudio();
+    this.setupAutoplayAndListeners();
   }
 
-  private notify(isPlaying: boolean) {
-    this.onStateChangeCb?.(isPlaying);
-  }
+  private initAudio() {
+    const audioPath = config.audioSrc || '/audio/nexus-ambient.mp3';
+    this.audio = new Audio(audioPath);
+    this.audio.loop = true;
+    this.audio.preload = 'auto';
+    this.audio.volume = 0;
 
-  public async toggle(targetVol: number): Promise<boolean> {
-    if (this.isPlaying) {
-      this.resumeWhenVisible = false;
-      await this.stop();
-      return false;
-    }
+    this.audio.addEventListener('play', () => {
+      this.isPlaying = true;
+      this.updateUI(true);
+    });
 
-    try {
-      this.resumeWhenVisible = false;
-      this.startSyntheticDrone(targetVol);
-      await this.audioCtx?.resume();
-      this.isPlaying = this.audioCtx?.state === 'running';
-      this.notify(this.isPlaying);
-      return this.isPlaying;
-    } catch {
-      await this.stop();
-      return false;
-    }
-  }
+    this.audio.addEventListener('pause', () => {
+      this.isPlaying = false;
+      this.updateUI(false);
+    });
 
-  public setVolume(vol: number) {
-    if (this.masterGain && this.audioCtx) {
-      this.masterGain.gain.setTargetAtTime(vol * 0.15, this.audioCtx.currentTime, 0.05);
-    }
-  }
+    this.audio.addEventListener('error', (e) => {
+      console.warn('Audio notice:', e);
+    });
 
-  public async stop() {
-    this.resumeWhenVisible = false;
-    this.isPlaying = false;
-    const context = this.audioCtx;
-    const oscillators = [this.osc1, this.osc2, this.lfo];
-    this.audioCtx = null;
-    this.masterGain = null;
-    this.osc1 = null;
-    this.osc2 = null;
-    this.lfo = null;
-
-    if (context) {
+    if ('mediaSession' in navigator) {
       try {
-        oscillators.forEach((oscillator) => oscillator?.stop());
-        await context.close();
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: config.audioTitle || 'NEXUS',
+          artist: config.audioArtist || 'MUj feat. BNM EFOSA, whyte tee',
+          album: 'NEXUS — Official Club Soundtrack',
+          artwork: [
+            { src: '/nexus-logo.png', sizes: '512x512', type: 'image/png' },
+          ],
+        });
+        navigator.mediaSession.setActionHandler('play', () => void this.play());
+        navigator.mediaSession.setActionHandler('pause', () => void this.pause());
       } catch {
-        // The context may already be closed by the browser.
+        // mediaSession optional
       }
     }
-    this.notify(false);
+  }
+
+  private setupAutoplayAndListeners() {
+    // Attempt playback immediately
+    this.attemptPlay();
+
+    // Browser Autoplay Policy: if blocked on load, activate on first interaction
+    const startOnFirstInteraction = () => {
+      if (!this.hasUserManuallyPaused && !this.isPlaying) {
+        void this.play();
+      }
+      cleanup();
+    };
+
+    const cleanup = () => {
+      window.removeEventListener('pointerdown', startOnFirstInteraction);
+      window.removeEventListener('keydown', startOnFirstInteraction);
+      window.removeEventListener('touchstart', startOnFirstInteraction);
+      window.removeEventListener('scroll', startOnFirstInteraction);
+    };
+
+    window.addEventListener('pointerdown', startOnFirstInteraction, { once: true });
+    window.addEventListener('keydown', startOnFirstInteraction, { once: true });
+    window.addEventListener('touchstart', startOnFirstInteraction, { once: true });
+    window.addEventListener('scroll', startOnFirstInteraction, { once: true, passive: true });
+  }
+
+  public async play(): Promise<boolean> {
+    if (!this.audio) return false;
+    try {
+      this.hasUserManuallyPaused = false;
+      await this.audio.play();
+      this.fadeIn();
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  public pause(): void {
+    if (!this.audio) return;
+    this.hasUserManuallyPaused = true;
+    this.fadeOutAndPause();
+  }
+
+  public toggle(): void {
+    if (this.isPlaying) {
+      this.pause();
+    } else {
+      void this.play();
+    }
+  }
+
+  private fadeIn(durationMs = 600) {
+    if (!this.audio) return;
+    const start = performance.now();
+    const startVol = this.audio.volume;
+    const step = () => {
+      if (!this.audio || this.audio.paused) return;
+      const progress = Math.min(1, (performance.now() - start) / durationMs);
+      this.audio.volume = startVol + (this.targetVolume - startVol) * progress;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  private fadeOutAndPause(durationMs = 300) {
+    if (!this.audio || this.audio.paused) return;
+    const start = performance.now();
+    const startVol = this.audio.volume;
+    const step = () => {
+      if (!this.audio) return;
+      const progress = Math.min(1, (performance.now() - start) / durationMs);
+      this.audio.volume = Math.max(0, startVol * (1 - progress));
+      if (progress < 1 && !this.audio.paused) {
+        requestAnimationFrame(step);
+      } else {
+        this.audio.pause();
+      }
+    };
+    requestAnimationFrame(step);
+  }
+
+  private attemptPlay() {
+    this.audio?.play().then(() => {
+      this.fadeIn();
+    }).catch(() => {
+      // Autoplay blocked by browser policy without user gesture - gesture listener will activate it
+    });
   }
 
   public onVisibilityChange(hidden: boolean) {
     if (hidden) {
-      if (this.isPlaying && this.audioCtx) {
-        this.resumeWhenVisible = true;
-        this.isPlaying = false;
-        const context = this.audioCtx;
-        void context.suspend().catch(() => {
-          if (context === this.audioCtx) {
-            this.resumeWhenVisible = false;
-            this.isPlaying = false;
-            this.notify(false);
-          }
-        });
-        this.notify(false);
+      if (this.isPlaying) {
+        this.wasPlayingBeforeHidden = true;
+        this.audio?.pause();
       }
-    } else if (this.resumeWhenVisible && this.audioCtx) {
-      const context = this.audioCtx;
-      this.resumeWhenVisible = false;
-      void context.resume().then(() => {
-        if (!document.hidden && context === this.audioCtx && context.state === 'running') {
-          this.isPlaying = true;
-          this.notify(true);
-        }
-      }).catch(() => {
-        this.isPlaying = false;
-        this.notify(false);
-      });
+    } else {
+      if (this.wasPlayingBeforeHidden && !this.hasUserManuallyPaused) {
+        this.wasPlayingBeforeHidden = false;
+        void this.play();
+      }
     }
   }
 
-  private startSyntheticDrone(vol: number) {
-    const AudioContextClass = window.AudioContext ??
-      (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-    if (!AudioContextClass) throw new Error('Web Audio is not available in this browser.');
-
-    this.audioCtx = new AudioContextClass();
-    this.masterGain = this.audioCtx.createGain();
-    this.masterGain.gain.setValueAtTime(vol * 0.12, this.audioCtx.currentTime);
-
-    const filter = this.audioCtx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(140, this.audioCtx.currentTime);
-
-    this.osc1 = this.audioCtx.createOscillator();
-    this.osc1.type = 'sine';
-    this.osc1.frequency.setValueAtTime(55, this.audioCtx.currentTime);
-
-    this.osc2 = this.audioCtx.createOscillator();
-    this.osc2.type = 'sine';
-    this.osc2.frequency.setValueAtTime(110, this.audioCtx.currentTime);
-
-    this.lfo = this.audioCtx.createOscillator();
-    this.lfo.frequency.setValueAtTime(0.1, this.audioCtx.currentTime);
-    const lfoGain = this.audioCtx.createGain();
-    lfoGain.gain.setValueAtTime(20, this.audioCtx.currentTime);
-    this.lfo.connect(lfoGain);
-    lfoGain.connect(filter.frequency);
-
-    this.osc1.connect(filter);
-    this.osc2.connect(filter);
-    filter.connect(this.masterGain);
-    this.masterGain.connect(this.audioCtx.destination);
-
-    this.osc1.start();
-    this.osc2.start();
-    this.lfo.start();
+  private updateUI(playing: boolean) {
+    if (navAudioBtn) {
+      navAudioBtn.setAttribute('aria-pressed', String(playing));
+    }
+    if (navAudioText) {
+      navAudioText.textContent = playing ? 'NEXUS ♪' : 'SOUNDTRACK';
+    }
   }
 }
 
-const soundscape = new CosmicSoundscape();
+const backgroundAudio = new BackgroundAudioPlayer();
 
-function updateAudioUI(isPlaying: boolean) {
-  musicButton.setAttribute('aria-pressed', String(isPlaying));
-  musicText.textContent = isPlaying ? 'Ambient tone: on' : 'Ambient tone: off';
-
-  if (navAudioBtn) {
-    navAudioBtn.setAttribute('aria-pressed', String(isPlaying));
-  }
-  if (navAudioText) {
-    navAudioText.textContent = isPlaying ? 'AMBIENCE ON' : 'AMBIENCE';
-  }
-}
-
-soundscape.onStateChange((isPlaying) => {
-  updateAudioUI(isPlaying);
-});
-
-async function handleAudioToggle() {
-  const currentVol = parseFloat(volSlider.value);
-  const isPlaying = await soundscape.toggle(currentVol);
-  updateAudioUI(isPlaying);
-}
-
-musicButton.addEventListener('click', handleAudioToggle);
-navAudioBtn?.addEventListener('click', handleAudioToggle);
-
-volSlider.addEventListener('input', () => {
-  const val = parseFloat(volSlider.value);
-  soundscape.setVolume(val);
-  try {
-    localStorage.setItem('nexus-vol', volSlider.value);
-  } catch {
-    // storage disabled
-  }
+navAudioBtn?.addEventListener('click', () => {
+  backgroundAudio.toggle();
 });
 
 document.addEventListener('visibilitychange', () => {
-  soundscape.onVisibilityChange(document.hidden);
+  backgroundAudio.onVisibilityChange(document.hidden);
 });
 
 window.addEventListener('pagehide', () => {
-  void soundscape.stop();
+  backgroundAudio.pause();
 });
 
 // 7. Active Navigation State Tracking

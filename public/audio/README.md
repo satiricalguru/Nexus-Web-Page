@@ -1,3 +1,6 @@
-No recorded audio is bundled with the site. The footer and header controls create an optional synthesized ambient tone, and the Spotify album is linked externally.
+# Audio Asset
 
-Only add a recorded track here after documenting permission to distribute it and updating the player to identify the recording accurately.
+- **Track**: NEXUS
+- **Artist**: MUj feat. BNM EFOSA, whyte tee
+- **File**: `nexus-ambient.mp3`
+- **Use**: Background soundtrack looped continuously across the web portal.
