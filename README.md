@@ -194,6 +194,8 @@ This project is licensed under the [MIT License](LICENSE) © 2026, Nexus MUJ.
 
 <div align="center">
   <b>🌐 Live Website: <a href="https://nexus-web-page.vercel.app">nexus-web-page.vercel.app</a></b><br />
-  <b>🏛️ Organization: <a href="https://github.com/Nexus-Web-Development">Nexus-Web-Development</a></b><br />
+  <b>💼 LinkedIn: <a href="https://www.linkedin.com/company/nexus-manipal-jaipur/">nexus-manipal-jaipur</a></b> • 
+  <b>📸 Instagram: <a href="https://www.instagram.com/nexus_muj/">@nexus_muj</a></b> • 
+  <b>🏛️ Campus: <a href="https://www.jaipur.manipal.edu/dsw-student-clubs.php">MUJ DSW</a></b><br />
   <sub>Pioneering Space & Technology through Code • © 2026 Nexus MUJ</sub>
 </div>

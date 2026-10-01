@@ -1,9 +1,12 @@
 // Single source for editable content. No registration numbers are stored here.
 export const config = {
   instagramUrl: 'https://www.instagram.com/nexus_muj/',
+  linkedinUrl: 'https://www.linkedin.com/company/nexus-manipal-jaipur/',
   joinUrl: '', // TODO: add the join/registration form URL when available
   spotifyUrl: 'https://open.spotify.com/album/1dBmFDmTfBtUz1hs9aoRKE',
   mujUrl: 'https://www.jaipur.manipal.edu/dsw-student-clubs.php',
+  githubUrl: 'https://github.com/satiricalguru/Nexus-Web-Page',
+  contactEmail: 'nexus@jaipur.manipal.edu',
   audioSrc: '/audio/nexus-ambient.mp3',
   audioTitle: 'NEXUS',
   audioArtist: 'MUj feat. BNM EFOSA, whyte tee',
