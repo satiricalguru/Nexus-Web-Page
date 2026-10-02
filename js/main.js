@@ -227,19 +227,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const projectDetails = {
         telemetry: {
             title: "Ground Station Telemetry",
-            intro: "A concept for a browser-based dashboard that turns payload measurements into understandable flight information.",
+            intro: "A dashboard concept for viewing altitude, temperature, GPS, and payload readings.",
             features: [ "Altitude and temperature plots with clearly labeled units", "GPS trajectory mapping and payload status panels", "Packet timestamps, missing-data indicators, and CSV export", "A simulated-data mode for learning before hardware integration" ],
             note: "Concept study with simulated readings. No live flight data or repository is available."
         },
         rocketry: {
             title: "Rocketry Projects",
-            intro: "A place to document student aerospace engineering concepts, design decisions, and the lessons learned along the way.",
+            intro: "A concept for documenting rocket designs, tests, and engineering decisions.",
             features: [ "Aerodynamic models and design studies", "Structural and materials exploration", "Avionics, sensing, and recovery-system concepts", "Project reports with documented methods and results" ],
             note: "Project concept. The rocket illustration does not depict a Nexus vehicle, launch, or achievement. Official project details are pending."
         },
         software: {
             title: "Software & Research Tools",
-            intro: "A home for research software that makes complex questions more approachable through computation and visualization.",
+            intro: "Small tools for processing sensor data, running simulations, and plotting results.",
             features: [ "Data processing and visualization utilities", "Scientific simulations with documented assumptions", "Reproducible analysis notebooks", "Readable code and contribution guides for student developers" ],
             note: "Concept study. The code illustration is not an installable package; a working demo and repository are not available."
         }
