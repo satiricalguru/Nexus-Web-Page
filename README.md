@@ -94,28 +94,55 @@ Most edits happen in three files:
 
 Install **Node.js 18 or newer** once. No `npm install` is needed.
 
-### Download or clone
+### Windows: easiest option
 
-Download the ZIP from this branch and extract it, or run:
+Download the ZIP from the `nexus-redesign` branch and extract it. Open the extracted folder containing `package.json`, then double-click **`start-site.cmd`**. The site opens in your browser. Keep the terminal window open while using it.
 
-```sh
+### Windows PowerShell: step by step
+
+Run **one command at a time** and press **Enter after each one**. Wait until it finishes before entering the next command. Do not join `cd Nexus-Web-Page` and `npm start` on one line.
+
+**1. Download the project:**
+
+```powershell
 git clone --branch nexus-redesign --single-branch https://github.com/satiricalguru/Nexus-Web-Page.git
+```
+
+If you have already cloned it, skip this step.
+
+**2. Enter the project folder:**
+
+```powershell
 cd Nexus-Web-Page
 ```
 
-### Windows
+Your prompt should now end with `\Nexus-Web-Page>`. If you cloned it from your Windows home folder, you can also use this command from anywhere:
 
-Double-click **`start-site.cmd`**. The site opens in your browser automatically. Keep the terminal window open while using it.
+```powershell
+cd "$HOME\Nexus-Web-Page"
+```
 
-### Any platform
+**3. Start the website:**
 
-Run this from the project folder:
-
-```sh
+```powershell
 npm start
 ```
 
-The default address is **http://127.0.0.1:8000/**. If that port is busy, the launcher chooses a free one and prints the address. Press **Ctrl+C** to stop the preview.
+The browser opens automatically. No `npm install` is needed.
+
+### If you get an error
+
+- **`Could not read package.json` / `ENOENT`:** you are in the wrong folder. Enter the `Nexus-Web-Page` folder first, then run `npm start` again.
+- **`Set-Location ... argument 'start'`:** two commands were joined together. Run the folder command and `npm start` separately.
+- **PowerShell says `npm.ps1` cannot run:** use `npm.cmd start` instead.
+- **`node` or `npm` is not recognized:** install Node.js, close PowerShell, and open it again.
+- **The browser doesn't open:** copy the local address printed in the terminal into your browser.
+
+### macOS or Linux
+
+Clone the branch, enter its folder with `cd Nexus-Web-Page`, then run `npm start`.
+
+The default address is **http://127.0.0.1:8000/**. If that port is busy, the launcher chooses a free one and prints the address. Keep the terminal open while using the site. Press **Ctrl+C** to stop it.
 
 ### Check and build
 
