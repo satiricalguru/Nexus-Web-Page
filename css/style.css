@@ -454,12 +454,6 @@ img {
   font-size: 13px;
   margin-top: 26px;
 }
-.interest-tags span:not(:last-child):after {
-  content: "âœ¦";
-  margin-left: 24px;
-  color: #565047;
-  font-size: 10px;
-}
 @keyframes scroll-down {
   0%,
   100% {
@@ -648,9 +642,6 @@ img {
   }
   .interest-tags {
     gap: 15px;
-  }
-  .interest-tags span:not(:last-child):after {
-    margin-left: 15px;
   }
   .scroll-cue {
     font-size: 10px;
