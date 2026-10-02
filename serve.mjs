@@ -1,4 +1,5 @@
 import http from "node:http";
+import { execFile } from "node:child_process";
 
 import { readFile, stat } from "node:fs/promises";
 
@@ -20,7 +21,7 @@ const types = {
     ".ttf": "font/ttf"
 };
 
-http.createServer(async (request, response) => {
+const server = http.createServer(async (request, response) => {
     try {
         const pathname = decodeURIComponent(new URL(request.url, "http://localhost").pathname);
         if (pathname === "/team" || pathname === "/team.html") {
@@ -46,4 +47,26 @@ http.createServer(async (request, response) => {
         });
         response.end("Not found");
     }
-}).listen(port, "127.0.0.1", () => console.log(`Nexus preview: http://127.0.0.1:${port}/`));
+});
+
+let retrying = false;
+server.on("error", error => {
+    if (error.code === "EADDRINUSE" && !retrying) {
+        retrying = true;
+        server.listen(0, "127.0.0.1");
+        return;
+    }
+    console.error(`Could not start the site: ${error.message}`);
+    process.exitCode = 1;
+});
+server.on("listening", () => {
+    const url = `http://127.0.0.1:${server.address().port}/`;
+    console.log(`Nexus preview: ${url}\nKeep this window open. Press Ctrl+C to stop.`);
+    if (!process.argv.includes("--open") || process.argv.includes("--no-open")) return;
+    const command = process.platform === "win32" ? "cmd.exe" : process.platform === "darwin" ? "open" : "xdg-open";
+    const args = process.platform === "win32" ? ["/c", "start", "", url] : [url];
+    execFile(command, args, { windowsHide: true }, error => {
+        if (error) console.log(`Open this address in your browser: ${url}`);
+    });
+});
+server.listen(port, "127.0.0.1");

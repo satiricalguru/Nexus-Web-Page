@@ -2,9 +2,17 @@
 
 The Nexus MUJ club website, built with HTML, CSS, JavaScript, and Three.js.
 
-## Run and build
+## Run the site
 
-Install Node.js, then run `npm start` and open the printed local address. Run `npm run check` to check JavaScript syntax and `npm run build` to produce a fresh `dist/` folder. Upload that folder to any static host. The current deployment uses Vercel; its configuration is optional when using another host.
+Install Node.js once if you don't already have it, then extract the downloaded ZIP.
+
+**Windows:** double-click `start-site.cmd`. The site opens in your browser. Keep the terminal window open while using it; close it when you're done.
+
+**Any platform:** open a terminal in this folder and run `npm start`. No `npm install` is needed. If port 8000 is busy, the preview picks a free port automatically.
+
+## Build
+
+Run `npm run check` to check the code and `npm run build` to create the `dist/` folder for hosting.
 
 ## Edit the site
 
