@@ -1,23 +1,8 @@
-# Operating System
-.DS_Store
-Thumbs.db
-
-# Dependencies
 node_modules/
-
-# Local-only media pending source and rights verification
-.local-audio-review/
-
-# Build outputs
 dist/
-build/
-.cache/
-
-# Environment files
+.vercel/
 .env
-.env.local
-.env.*.local
-.vercel
-
-# Internal build prompts
-CLAUDE_NEXUS_WEB_BUILD_PROMPT.md
+.env.*
+!.env.example
+*.log
+*.zip

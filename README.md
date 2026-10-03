@@ -1,201 +1,166 @@
 <div align="center">
 
-  <!-- Widescreen Hero Banner -->
-  <a href="https://nexus-web-page.vercel.app">
-    <img src="https://raw.githubusercontent.com/satiricalguru/Nexus-Web-Page/main/public/nexus-banner.png" alt="Nexus Widescreen Banner" width="100%" style="border-radius: 12px;" />
-  </a>
+<a href="https://nexus-muj.vercel.app/">
+  <img src="assets/images/cosmic-hero.webp" alt="Nexus space backdrop" width="100%" />
+</a>
 
-  <br /><br />
+# NEXUS MUJ
 
-  <!-- Animated Typing Header -->
-  <a href="https://nexus-web-page.vercel.app">
-    <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=700&size=24&duration=2500&pause=1000&color=F5CE62&center=true&vCenter=true&width=750&height=55&lines=NEXUS+WEB+PORTAL;INTERACTIVE+3D+SPACE+EXPERIENCE;RESEARCH+%7C+SPACE+%7C+TECHNOLOGY;MANIPAL+UNIVERSITY+JAIPUR" alt="Typing SVG" />
-  </a>
+**Space · Research · Technology**  
+Manipal University Jaipur
 
-  <p align="center">
-    <b>The official interactive 3D web portal for Nexus — Research, Space & Technology Club</b><br />
-    <i>Manipal University Jaipur (MUJ) • Rajasthan, India</i>
-  </p>
+<p><code>HTML</code> · <code>CSS</code> · <code>JavaScript</code> · <code>Three.js</code></p>
 
-  <!-- Interactive Badges -->
-  <p align="center">
-    <a href="https://nexus-web-page.vercel.app"><img src="https://img.shields.io/badge/Live_Demo-nexus--web--page.vercel.app-F5CE62?style=for-the-badge&logo=vercel&logoColor=black" /></a>
-    <a href="https://github.com/satiricalguru/Nexus-Web-Page"><img src="https://img.shields.io/badge/Repository-satiricalguru%2FNexus--Web--Page-D4AF37?style=for-the-badge&logo=github&logoColor=black" /></a>
-    <a href="https://jaipur.manipal.edu/"><img src="https://img.shields.io/badge/Campus-Manipal_University_Jaipur-F15A24?style=for-the-badge&logo=googlemaps&logoColor=white" /></a>
-    <a href="#-interactive-tech-radar"><img src="https://img.shields.io/badge/Stack-Three.js_•_TypeScript_•_Vite-000000?style=for-the-badge&logo=three.js&logoColor=F5CE62" /></a>
-    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License" /></a>
-  </p>
-
-  <!-- Quick Navigation Pills -->
-  <p align="center">
-    <a href="https://nexus-web-page.vercel.app"><b>[ 🌐 Live Site ]</b></a> •
-    <a href="#-overview"><b>[ 🚀 Overview ]</b></a> •
-    <a href="#-key-features"><b>[ ✨ Features ]</b></a> •
-    <a href="#-interactive-tech-radar"><b>[ 🛠️ Tech Stack ]</b></a> •
-    <a href="#-core-builders"><b>[ 👥 Builders ]</b></a> •
-    <a href="#-project-structure"><b>[ 📁 Structure ]</b></a> •
-    <a href="#-getting-started"><b>[ 🧑‍💻 Run Locally ]</b></a>
-  </p>
-
-  <img src="https://raw.githubusercontent.com/satiricalguru/Nexus-Web-Page/main/public/assets/cosmic-divider.svg" width="100%" />
+**[🌐 Live Site](https://nexus-muj.vercel.app/)** · **[✨ Features](#features)** · **[🛠️ Stack](#stack)** · **[👥 Team](#team)** · **[📁 Files](#files)** · **[💻 Run Locally](#run-locally)**
 
 </div>
-
-> [!TIP]
-> 🚀 **Live Production Deployment**: Experience the 3D space portal live at **[https://nexus-web-page.vercel.app](https://nexus-web-page.vercel.app)**.
-> Built for the student-led **Nexus Research, Space & Technology Club** at **Manipal University Jaipur**.
 
 ---
 
 ## 🚀 Overview
 
-**Nexus Web Page** is the digital mission control and public flagship portal for **Nexus** at Manipal University Jaipur. Designed with a custom gold-and-void cosmic design aesthetic, the website blends interactive Three.js WebGL graphics with real-time club telemetry, research domains, member rosters, and an ambient cosmic soundscape.
+The Nexus club website brings together project ideas, the team directory, and ways to get in touch. This version keeps the black-and-gold space theme, with an animated star background and a layout that works on phones and desktops.
 
-```
-                  ┌─────────────────────────────────────┐
-                  │          NEXUS WEB PORTAL           │
-                  └──────────────────┬──────────────────┘
-                                     │
-           ┌─────────────────────────┼─────────────────────────┐
-           ▼                         ▼                         ▼
-   ┌───────────────┐         ┌───────────────┐         ┌───────────────┐
-   │ Interactive   │         │ Mission Ctrl  │         │ Crew Roster   │
-   │ 3D Orbit WebGL│         │ Telemetry/Work│         │ Search/Filter │
-   └───────────────┘         └───────────────┘         └───────────────┘
-           │                         │                         │
-           └─────────────────────────┼─────────────────────────┘
-                                     ▼
-                      [ Cosmic Soundscape Synthesizer ]
-```
+You're viewing the **`nexus-redesign`** branch. The live preview is available at **[nexus-muj.vercel.app](https://nexus-muj.vercel.app/)**.
 
-<img src="https://raw.githubusercontent.com/satiricalguru/Nexus-Web-Page/main/public/assets/cosmic-divider.svg" width="100%" />
+<a id="features"></a>
 
 ## ✨ Key Features
 
-- **🌌 Interactive 3D Orbital Scene**: Powered by Three.js with a golden wireframe central core, asynchronous gyroscopic rings, 1,200 depth-scaled star particles, and interactive raycasted sector beacons.
-- **🧭 Dynamic Sector Navigation**: Tap or drag celestial beacons to smooth-lerp the camera and jump directly to telemetry sectors (`#mission`, `#domains`, `#work`, `#events`, `#members`).
-- **👥 Crew Directory & Filter Engine**: Complete student roster with instant real-time filtering by team (Core Committee, Web Development, Events, Marketing, etc.) and live name search.
-- **🎵 Cosmic Soundscape Controller**: Dual-control ambient audio (header & footer) with animated equalizer bars, smooth volume transitions, MediaSession lock-screen controls, and a Web Audio multi-oscillator harmonic synthesizer fallback.
-- **⚡ High-Performance Architecture**: Zero bloated runtime frameworks — pure Vanilla CSS3, TypeScript, and Vite for consistent 60 FPS WebGL rendering.
-- **♿ Fully Accessible (WCAG 2.1 AA)**: Semantic HTML5, full ARIA roles and live states, high contrast typography, keyboard navigability, and `prefers-reduced-motion` safety.
+- **Star background** — a Three.js star field with a static artwork fallback.
+- **Team directory** — search members by name, filter by team, and expand the full roster.
+- **Project cards** — telemetry, rocketry, and software concepts with detail popups.
+- **Scribble hover effects** — drawn underlines on titles and buttons, with subtle card movement.
+- **Mobile navigation** — a full-screen menu and responsive layouts.
+- **Keyboard support** — visible focus indicators, Escape-to-close dialogs, and reduced-motion support.
+- **Quick local setup** — a Windows launcher or one terminal command, with no dependency installation.
 
-<img src="https://raw.githubusercontent.com/satiricalguru/Nexus-Web-Page/main/public/assets/cosmic-divider.svg" width="100%" />
+<a id="stack"></a>
 
-## 🛠️ Interactive Tech Radar
+## 🛠️ Tech Stack
 
-<div align="center">
-
-| Ecosystem | Technologies |
+| Part | Built with |
 | :--- | :--- |
-| **Frontend & Web Core** | ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) |
-| **Creative & 3D WebGL** | ![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white) ![WebGL](https://img.shields.io/badge/WebGL-990000?style=for-the-badge&logo=webgl&logoColor=white) ![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=black) ![Blender](https://img.shields.io/badge/Blender-E87D0D?style=for-the-badge&logo=blender&logoColor=white) |
-| **Backend & Cloud** | ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white) ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white) |
+| Page content | HTML |
+| Styling and responsive layouts | CSS |
+| Navigation, search, filters, and dialogs | JavaScript |
+| Star animation | Three.js / WebGL |
+| Local preview and build | Node.js |
+| Current hosting | Vercel |
 
-</div>
-
-<img src="https://raw.githubusercontent.com/satiricalguru/Nexus-Web-Page/main/public/assets/cosmic-divider.svg" width="100%" />
+<a id="team"></a>
 
 ## 👥 Core Builders
 
-<p align="center">
-  <i>Designed, architected, and engineered for the Nexus Space & Research Web Experience at Manipal University Jaipur.</i>
-</p>
+| Jatin Pandey | Aditya Goyal | Lakshya |
+| :---: | :---: | :---: |
+| [@satiricalguru](https://github.com/satiricalguru) | [@SynthReaper](https://github.com/SynthReaper) | [@lakshya-agrawal254](https://github.com/lakshya-agrawal254) |
 
-<div align="center">
-
-<table>
-  <tr>
-    <td align="center" width="160">
-      <a href="https://github.com/satiricalguru">
-        <img src="https://github.com/satiricalguru.png?size=100" width="85" height="85" style="border-radius: 50%;" /><br />
-        <sub><b>Jatin Pandey</b></sub>
-      </a><br />
-      <img src="https://img.shields.io/badge/Core_Builder-D4AF37?style=flat-square" />
-    </td>
-    <td align="center" width="160">
-      <a href="https://github.com/SynthReaper">
-        <img src="https://github.com/SynthReaper.png?size=100" width="85" height="85" style="border-radius: 50%;" /><br />
-        <sub><b>Aditya Goyal</b></sub>
-      </a><br />
-      <img src="https://img.shields.io/badge/Core_Builder-D4AF37?style=flat-square" />
-    </td>
-    <td align="center" width="160">
-      <a href="https://github.com/lakshya-agrawal254">
-        <img src="https://github.com/lakshya-agrawal254.png?size=100" width="85" height="85" style="border-radius: 50%;" /><br />
-        <sub><b>Lakshya</b></sub>
-      </a><br />
-      <img src="https://img.shields.io/badge/Core_Builder-D4AF37?style=flat-square" />
-    </td>
-  </tr>
-</table>
-
-</div>
-
-<img src="https://raw.githubusercontent.com/satiricalguru/Nexus-Web-Page/main/public/assets/cosmic-divider.svg" width="100%" />
+<a id="files"></a>
 
 ## 📁 Project Structure
 
 ```text
 Nexus-Web-Page/
-├── index.html                   # Semantic HTML5 mission control entrypoint
-├── package.json                 # Project dependencies and build scripts
-├── tsconfig.json                # TypeScript compiler configuration
-├── public/
-│   ├── assets/
-│   │   └── cosmic-divider.svg   # Custom SVG orbital section divider
-│   ├── audio/
-│   │   └── README.md            # Audio policy and asset guidance
-│   ├── nexus-banner.png         # 16:9 widescreen hero banner
-│   └── nexus-logo.png           # Gold orbital insignia
-└── src/
-    ├── data.ts                  # Club roster, team leads, links & project schema
-    ├── main.ts                  # UI engine, search, filters & soundscape controller
-    ├── scene.ts                 # Three.js 3D space scene & orbital beacons
-    └── style.css                # Gold-and-void cosmic design system
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   ├── main.js
+│   └── vendor/
+├── assets/
+│   ├── fonts/
+│   └── images/
+├── start-site.cmd
+├── serve.mjs
+├── build.mjs
+├── package.json
+├── vercel.json
+├── LICENSE
+└── README.md
 ```
 
-<img src="https://raw.githubusercontent.com/satiricalguru/Nexus-Web-Page/main/public/assets/cosmic-divider.svg" width="100%" />
+Most edits happen in three files:
 
-## 🧑‍💻 Getting Started
+| File | What to edit |
+| :--- | :--- |
+| `index.html` | Page content, project cards, and contact links |
+| `css/style.css` | Colors, spacing, layouts, and hover effects |
+| `js/main.js` | Team names and roles, search, dialogs, and animation |
 
-### Prerequisites
-- Node.js 18+
-- npm 9+
+<a id="run-locally"></a>
 
-### Local Setup
+## 💻 Getting Started
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/satiricalguru/Nexus-Web-Page.git
+Install **Node.js 18 or newer** once. No `npm install` is needed.
+
+### Windows: easiest option
+
+Download the ZIP from the `nexus-redesign` branch and extract it. Open the extracted folder containing `package.json`, then double-click **`start-site.cmd`**. The site opens in your browser. Keep the terminal window open while using it.
+
+### Windows PowerShell: step by step
+
+Run **one command at a time** and press **Enter after each one**. Wait until it finishes before entering the next command. Do not join `cd Nexus-Web-Page` and `npm start` on one line.
+
+**1. Download the project:**
+
+```powershell
+git clone --branch nexus-redesign --single-branch https://github.com/satiricalguru/Nexus-Web-Page.git
+```
+
+If you have already cloned it, skip this step.
+
+**2. Enter the project folder:**
+
+```powershell
 cd Nexus-Web-Page
-
-# 2. Install dependencies
-npm install
-
-# 3. Start development server
-npm run dev
-
-# 4. Build for production
-npm run build
-
-# 5. Preview production build
-npm run preview
 ```
 
-The local development server will start at `http://localhost:5173`.
+Your prompt should now end with `\Nexus-Web-Page>`. If you cloned it from your Windows home folder, you can also use this command from anywhere:
+
+```powershell
+cd "$HOME\Nexus-Web-Page"
+```
+
+**3. Start the website:**
+
+```powershell
+npm start
+```
+
+The browser opens automatically. No `npm install` is needed.
+
+### If you get an error
+
+- **`Could not read package.json` / `ENOENT`:** you are in the wrong folder. Enter the `Nexus-Web-Page` folder first, then run `npm start` again.
+- **`Set-Location ... argument 'start'`:** two commands were joined together. Run the folder command and `npm start` separately.
+- **PowerShell says `npm.ps1` cannot run:** use `npm.cmd start` instead.
+- **`node` or `npm` is not recognized:** install Node.js, close PowerShell, and open it again.
+- **The browser doesn't open:** copy the local address printed in the terminal into your browser.
+
+### macOS or Linux
+
+Clone the branch, enter its folder with `cd Nexus-Web-Page`, then run `npm start`.
+
+The default address is **http://127.0.0.1:8000/**. If that port is busy, the launcher chooses a free one and prints the address. Keep the terminal open while using the site. Press **Ctrl+C** to stop it.
+
+### Check and build
+
+```sh
+npm run check
+npm run build
+```
+
+The build creates a **`dist/`** folder ready for static hosting.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE) © 2026, Nexus MUJ.
-
----
+[MIT License](https://github.com/satiricalguru/Nexus-Web-Page/blob/main/LICENSE) · © 2026 Nexus MUJ
 
 <div align="center">
-  <b>🌐 Live Website: <a href="https://nexus-web-page.vercel.app">nexus-web-page.vercel.app</a></b><br />
-  <b>💼 LinkedIn: <a href="https://www.linkedin.com/company/nexus-manipal-jaipur/">nexus-manipal-jaipur</a></b> • 
-  <b>📸 Instagram: <a href="https://www.instagram.com/nexus_muj/">@nexus_muj</a></b> • 
-  <b>🏛️ Campus: <a href="https://www.jaipur.manipal.edu/dsw-student-clubs.php">MUJ DSW</a></b><br />
-  <sub>Pioneering Space & Technology through Code • © 2026 Nexus MUJ</sub>
+
+**[🌐 Live Site](https://nexus-muj.vercel.app/)** · **[📸 Instagram](https://www.instagram.com/nexus_muj/)** · **[🏛️ MUJ Clubs](https://www.jaipur.manipal.edu/dsw-student-clubs.php)**
+
 </div>
