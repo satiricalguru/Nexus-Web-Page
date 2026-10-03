@@ -21,7 +21,7 @@ Manipal University Jaipur
 
 The Nexus club website brings together project ideas, the team directory, and ways to get in touch. This version keeps the black-and-gold space theme, with an animated star background and a layout that works on phones and desktops.
 
-You're viewing the **`nexus-redesign`** branch. The live preview is available at **[nexus-muj.vercel.app](https://nexus-muj.vercel.app/)**.
+The live preview is available at **[nexus-muj.vercel.app](https://nexus-muj.vercel.app/)**.
 
 <a id="features"></a>
 
